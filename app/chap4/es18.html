@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html ng-app="notesApp">
+<head>
+    <!-- Form state CSS classes:
+     form state     CSS class applied
+     $invalid       ng-invalid
+     $valid         ng-valid
+     $pristine      ng-pristine
+     $dirty         ng-dirty -->
+
+    <!-- Input state CSS classes:
+     form state     CSS class applied
+     $invalid       ng-invalid
+     $valid         ng-valid
+     $pristine      ng-pristine
+     $dirty         ng-dirty
+     required       ng-valid-required or ng-invalid-required
+     min            ng-valid-min or .....and so on for every line with the invalid version
+     max            ng-valid-max
+     minlength      ng-valid-minlegth
+     maxlength      ng-valid-maxlength
+     pattern        ng-valid-pattern
+     url            ng-valid-url
+     email          ng-valid-email
+     date           ng-valid-date
+     number         ng-valid-number -->
+    <style>
+        .username.ng-valid {
+            background-color: green;
+        }
+
+        .username.ng-dirty.ng-invalid-required {
+            background-color: red;
+        }
+
+        .username.ng-dirty.ng-invalid-minlength {
+            background-color: lightpink;
+        }
+    </style>
+</head>
+<body ng-controller="MainCtrl as ctrl">
+
+<form ng-submit="ctrl.submit()" name="myForm">
+    <input type="text"
+           class="username"
+           name="uname"
+           ng-model="ctrl.user.username"
+           required
+           ng-minlength="4"/>
+    <input type="submit"
+           value="Submit"
+           ng-disabled="myForm.$invalid"/>
+</form>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+<script type="text/javascript">
+    angular.module('notesApp', [])
+            .controller('MainCtrl', [function () {
+                var self = this;
+                self.submit = function () {
+                    console.log("Second form submit with ", self.user);
+                };
+            }]);
+</script>
+</body>
+</html>

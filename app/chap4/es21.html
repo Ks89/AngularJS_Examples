@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html ng-app="notesApp">
+
+<body ng-controller="MainCtrl as ctrl">
+
+<div>
+    <!-- "c.id as c.label for c in ctrl.countries" tells AngulaJS to create one option for each
+        country in the array of countries. The syntax is as follows:"modelValue as labelValue for item in array" -->
+    <select ng-model="ctrl.selectedCountryId"
+            ng-options="c.id as c.label for c in ctrl.countries">
+    </select>
+    Selected Country ID: {{ctrl.selectedCountryId}}
+</div>
+
+<div>
+    <!-- "c.label for c in ctrl.countries". AngularJS assumes that each item in the repeat is the actual model
+    value, so when we select an item from the second select box, the country object (c) of that option box gets
+    assigned to ctrl.selectedCountry -->
+    <select ng-model="ctrl.selectedCountry"
+            ng-options="c.label for c in ctrl.countries">
+    </select>
+    Selected Country: {{ctrl.selectedCountry}}
+</div>
+
+<!-- You can also optionally give a grouping clause, for which the syntax would be
+     ng-options="modelValue as labelValue group by groupValue for item in array".
+     When you use objects, the clause changes as follows:
+     modelValue as labelValue group by groupValue for (key, value) in object".
+    -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+<script type="text/javascript">
+    angular.module('notesApp', [])
+            .controller('MainCtrl', [function () {
+                this.countries = [
+                    {label: 'USA', id: 1},
+                    {label: 'India', id: 2},
+                    {label: 'Other', id: 3}
+                ];
+                this.selectedCountryId = 2;
+                this.selectedCountry = this.countries[1];
+            }]);
+</script>
+</body>
+</html>

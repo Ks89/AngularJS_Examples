@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html ng-app>
+<body>
+
+<!-- Textarea in angular works like text inputs -->
+<!-- textarea ng-model="ctrl.user.address" required></textarea> -->
+
+<form novalidate name="myForm">
+    <input type="text"
+           class="username"
+           name="uname"
+           ng-model="ctrl.user.username"
+           required=""
+           placeholder="Username"
+           ng-minlength="4"/>
+    <input type="password"
+           class="password"
+           name="pwd"
+           ng-model="ctrl.user.password"
+           placeholder="Password"
+           required=""/>
+
+    <!-- To create a subform you must use an ng-form -->
+    <!-- The state of this subform can be accessed directly (profile.$invalid) of
+         through the parent form (myForm.profile.$invalid-->
+    <!-- Individual elements of the form can be accessed as normal (profile.firstName.$error.required) -->
+    <!-- Subform and nested forms still affect the outher form (the myForm.$invalid is true
+         because of the use of the required tags) -->
+    <ng-form name="profile">
+        <input type="text"
+               name="firstname"
+               ng-model="ctrl.user.profile.firstName"
+               required
+               placeholder="First Name"/>
+        <input type="text"
+               name="middleName"
+               ng-model="ctrl.user.profile.middleName"
+               placeholder="Middle Name"/>
+        <input type="text"
+               name="lastName"
+               ng-model="ctrl.user.profile.lastName"
+               required
+               placeholder="Last Name"/>
+        <input type="date"
+               name="dob"
+               placeholder="Date of Birth"
+               ng-model="ctrl.user.profile.dob"/>
+    </ng-form>
+
+    <span ng-show="myForm.profile.$invalid">
+        Please fill out the profile information
+    </span>
+
+    <input type="submit"
+           value="Submit"
+           ng-disabled="myForm.$invalid"/>
+
+</form>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+</body>
+</html>

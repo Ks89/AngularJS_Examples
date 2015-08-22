@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html ng-app="notesApp">
+<body ng-controller="MainCtrl as ctrl">
+
+<form ng-submit="ctrl.submit1()">
+    <input type="text" ng-model="ctrl.username"/>
+    <input type="password" ng-model="ctrl.password"/>
+    <input type="submit" value="Submit"/>
+</form>
+
+<!-- This way is preferred, with ctrl.user.username and ctrl.user.password -->
+<form ng-submit="ctrl.submit2()">
+    <input type="text" ng-model="ctrl.user.username"/>
+    <input type="password" ng-model="ctrl.user.password"/>
+    <input type="submit" value="Submit"/>
+</form>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+<script type="text/javascript">
+    angular.module('notesApp', [])
+            .controller('MainCtrl', [function () {
+                var self = this;
+                self.submit1 = function () {
+                    var user = {username: self.username, password: self.password};
+                    console.log("First form submit with ", user);
+                };
+                self.submit2 = function () {
+                    //this way is preferred, because you are directly modelling how you want to represent the form as
+                    // an object in the controller. This removes any additional work we might have to do when work with
+                    // the values of the form.
+                    console.log("Second form submit with ", self.user);
+                };
+            }]);
+</script>
+</body>
+</html>

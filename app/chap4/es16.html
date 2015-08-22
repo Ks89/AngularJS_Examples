@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html ng-app="notesApp">
+<body ng-controller="MainCtrl as ctrl">
+
+In this example you must type at least a char in password field,
+and at least 4 char in username to enable the submit button.
+
+<form ng-submit="ctrl.submit()" name="myForm">
+
+    <!-- required is a HTML5 validation tag -->
+    <!-- ng-disabled directive disables the element if the condition is true -->
+    <!-- For the disable condition, we leverage the form, which exposes a controller with the current state of the form.
+         In this case, we tell the button to disable itself if the form with the name myForm is $invalid.-->
+
+    <!-- Form states in Angular are: $invalid, $valid, $pristine, $dirty, $error -->
+
+    <!-- Built-in AngularJS validators:
+    1) required: marked always required
+    2) ng-required: you can dynamically change if a field will be required or not
+    3) ng-minlength
+    4) ng-maxlength
+    5) ng-pattern: use a regex to check the validity of a field.
+    6) type="email": email validation
+    7) type="number": number validation
+    8) type="date": shows an HTML datepicker
+    9) type="url": url validation -->
+
+    <input type="text"
+           ng-model="ctrl.user.username"
+           required
+           ng-minlength="4"/>
+    <input type="password"
+           ng-model="ctrl.user.password"
+           required/>
+    <input type="submit"
+           value="Submit"
+           ng-disabled="myForm.$invalid"/>
+</form>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+<script type="text/javascript">
+    angular.module('notesApp', [])
+            .controller('MainCtrl', [function () {
+                var self = this;
+                self.submit = function () {
+                    console.log("Second form submit with ", self.user);
+                };
+            }]);
+</script>
+</body>
+</html>

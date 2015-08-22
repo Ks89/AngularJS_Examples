@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html ng-app="notesApp">
+<body ng-controller="MainCtrl as ctrl">
+
+<form ng-submit="ctrl.submit()">
+    <input type="text" ng-model="ctrl.user.username"/>
+    <input type="password" ng-model="ctrl.user.password"/>
+    <input type="submit" value="Submit"/>
+</form>
+
+<!-- Instead of binding to ctrl.username and ctrl.password, we bind to ctrl.user.username and ctrl.user.password.
+ Notice that we didn't declare a user object in the controller. When u use ng.model, Angular automatically creates the objects
+  and keys necessary in the chain to instantiate a data-binding connection. When the user type something there is no user object.
+   When the user types a letter for the first time, Angular creates the user object.-->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+<script type="text/javascript">
+    angular.module('notesApp', [])
+            .controller('MainCtrl', [function () {
+                var self = this;
+                self.submit = function () {
+                    console.log('User clicked submit with ', self.user);
+                };
+            }]);
+</script>
+</body>
+</html>
