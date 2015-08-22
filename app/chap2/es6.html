@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html ng-app="notesApp">
+<!-- We use a particular instance name of the MainCtrl called "ctrl". -->
+<body ng-controller="MainCtrl as ctrl">
+{{ctrl.message}} AngularJS.
+
+<button ng-click="ctrl.changeMessage()">
+    Change Message
+</button>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+<script type="text/javascript">
+    angular.module('notesApp', [])
+            .controller('MainCtrl', [function () {
+                var self = this; //use this proxy var instead of use "this"
+                self.message = "Hello";
+                self.changeMessage = function () {
+                    self.message = "Goodbye";
+                };
+            }]);
+</script>
+</body>
+</html>

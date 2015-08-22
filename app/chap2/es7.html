@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html ng-app="notesApp">
+<!-- We use a particular instance name of the MainCtrl called "ctrl". -->
+<body ng-controller="MainCtrl as ctrl">
+
+<!-- We used the directive called ng-repeat. The contents of the element on which the
+    directive is applied is considered the "template" of the ng-repeat.
+    Angular JS picks up this template, makes a copy of it, and them applies it for each instance of the ng-repeat.
+    In the previous case, the label and status span elements were repeated four times, once for each item in the notes array.-->
+
+<!-- ng-repeat syntax: "eachVar in arrayVar"
+Inside the context on ng-repeat i can use the new variable "eachVar".-->
+<div ng-repeat="note in ctrl.notes">
+    <!-- You can do the same thing with either {...} or ng-bind="..." -->
+    <!-- But with the first method there is a moment during page loading with the {{}} printed on the page.
+    TO avoid this is preferred to use the second method, with ng-bind -->
+    <span class="label">{{note.label}}</span>
+    <span class="status" ng-bind="note.done"></span>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+<script type="text/javascript">
+    angular.module('notesApp', [])
+            .controller('MainCtrl', [function () {
+                var self = this;
+                self.notes = [
+                    {id: 1, label: 'First Note', done: false},
+                    {id: 2, label: 'Second Note', done: false},
+                    {id: 3, label: 'Done Note', done: true},
+                    {id: 4, label: 'Last Note', done: false}
+                ];
+            }]);
+</script>
+</body>
+</html>

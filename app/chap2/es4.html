@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<!-- Controllers are JS function that perform or trigger most of our ui-oriented work
+Controller are almost always connected linked to views or HTML.
+It acts as a gateway between our model and the view
+ A controller:
+ * decide which part of the data to show to users
+ * fetch data from the server for the ui
+ * presentation logic, such as how to display elements
+ * user interactions
+ -->
+<html ng-app="notesApp">
+<body ng-controller="MainCtrl">
+Hello {{1+1}}nd time AngularJS
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+<script type="text/javascript">
+    angular.module('notesApp', [])
+            .controller('MainCtrl', [function () {
+                //Controller specific code.
+                //The use of "[function() ...]" isn't necessary, but it's extremely recommended.
+                console.log("MainCtrl as been created");
+            }]);
+</script>
+</body>
+</html>

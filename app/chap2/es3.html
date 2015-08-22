@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<!-- Modules: used by Angular to package code with a single name and it's also what AngularJS uses to start an application-->
+<!-- two parts: -->
+<!-- 1) a module can define its own controllers, factories, services, directives. These are function accessible through the module -->
+<!-- 2) the module can depends on other module as dependencies, which are defined when module is instantiated -->
+
+<html ng-app="notesApp">
+<body>
+Hello {{1+1}}nd time AngularJS
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+<script type="text/javascript">
+    //definition of a module with name "notesApp"
+    //the second argument is an array of module names that this module depends on.
+
+    //If u want to load a module, you must remove the second argument (the array).
+
+    //Also remember to load the file the defines the module before you try to use it.
+    angular.module('notesApp', []);
+</script>
+</body>
+</html>

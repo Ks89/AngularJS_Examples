@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html ng-app="notesApp">
+<body ng-controller="MainCtrl as ctrl">
+
+<!-- We use ng-repeat-start and ng-repeat-end because we can't have a wrapper element around the tr table row element.-->
+<table>
+    <tr ng-repeat-start="note in ctrl.notes">
+        <td>{{note.label}}</td>
+    <tr ng-repeat-end>
+        <td>Done: {{note.done}}</td>
+</table>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+<script type="text/javascript">
+    angular.module('notesApp', [])
+            .controller('MainCtrl', [function () {
+                var self = this;
+                self.notes = [
+                    {id: 1, label: 'First Note', done: false},
+                    {id: 2, label: 'Second Note', done: false},
+                    {id: 3, label: 'Finished Third Note', done: true}
+                ];
+            }]);
+</script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html ng-app="notesApp">
+<!-- We use a particular instance name of the MainCtrl called "ctrl". -->
+<body ng-controller="MainCtrl as ctrl">
+{{ctrl.helloMsg}} AngularJS.
+<br/>
+{{ctrl.goodbyeMsg}} Angular JS.
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+<script type="text/javascript">
+    angular.module('notesApp', [])
+            .controller('MainCtrl', [function () {
+                var self = this;
+                self.helloMsg = "Hello"; //this works
+                var goodbyeMsg = "Goodbye"; //but this not, because you definied a local variable inside the controller.
+            }]);
+</script>
+</body>
+</html>

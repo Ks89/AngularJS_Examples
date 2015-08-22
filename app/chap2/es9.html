@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html ng-app="notesApp">
+<body ng-controller="MainCtrl as ctrl">
+
+<!-- in ng-repeat you can use the form "variable in arrayEpression" or "(key, value) in objectExpression" -->
+<div ng-repeat="(author, note) in ctrl.notes">
+    <span class="label">{{note.label}}</span>
+    <span class="author" ng-bind="author"></span>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+<script type="text/javascript">
+    angular.module('notesApp', [])
+            .controller('MainCtrl', [function () {
+                var self = this;
+                self.notes = {
+                    shyam: {
+                        id: 1,
+                        label: 'First Note',
+                        done: false
+                    },
+                    Misko: {
+                        id: 3,
+                        label: 'Finished Third Note',
+                        done: true
+                    },
+                    brad: {
+                        id: 2,
+                        label: 'Second Note',
+                        done: false
+                    }
+                };
+            }]);
+</script>
+</body>
+</html>
