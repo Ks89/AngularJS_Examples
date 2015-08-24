@@ -12,14 +12,14 @@ describe('ItemCtrl with SpyReturn', function () {
         //Jasmine spy. The spyOn function returns a spy that's called with the andReturn
         //function on the spy created by createSpy, and gives it the value to return.
         //Then we can check if ItemService.list was called, and if it was called once.
-        spyOn(ItemService, 'list').andReturn([{id: 1, label: 'Mock'}]);
+        spyOn(ItemService, 'list').and.returnValue([{id: 1, label: 'Mock'}]);
         itemService = ItemService;
         ctrl = $controller('ItemCtrl');
     }));
 
     it('should load mocked out items', function () {
         expect(itemService.list).toHaveBeenCalled();
-        expect(itemService.list.callCount).toEqual(1);
+        expect(itemService.list.calls.count()).toEqual(1);
         expect(ctrl.items).toEqual([
             {id: 1, label: 'Mock'}
         ]);
