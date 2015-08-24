@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html ng-app="notesApp">
+
+<!-- Controller vs Services
+                          Controllers                         |                         Services
+    -------------------------------------------------------------------------------------------------------------------
+    * Presentation logic                                      |    * Business logic
+    * Linked to a view                                        |    * Indipendent of views
+    * Drives the UI                                           |    * Drives the application
+    * One-off, specific                                       |    * Reusable
+    * Responsible for fetch data, what data to show,          |    * Responsible for Making server calls, validation logic,
+     how handle user interaction, styling and display UI      |     app-level stores, reusable business logic-->
+
+<!-- Any service can be simply injected into any other service, directive, or controller by stating it as a dependency.-->
+<!-- Dependency injection states that instead of creating an instance of a dependent service when we need it,
+     the class or function should ask for in instead. -->
+<!-- Angular JS services are singleton for the scope of our application. This means that two controllers or services
+     that ask for ServiceA will get the same instance.-->
+<!-- User defined services use normal names. Otherwise, Angular buit-in services use name with a $ as prefix
+ -->
+
+<!-- Common angular js services:
+     $window: wrapper around the global window object
+     $location: allow to interact with url in the browser bar, and get and manipulate its value.
+                These functions are available: absurl, url, path, search
+     $http: allow to make GET and POST requestsm set headers and catching and deal with server responses and failures-->
+
+<!-- We should create an AngularJS service if:
+     1) It needs to be reusable
+     2) Application-level state
+     3) It's independent of the view
+     4) It integrates with a third-party service
+     5) Caching/factories -->
+
+<body ng-controller="MainCtrl as mainCtrl">
+
+<h1>Hello Services!</h1>
+
+<button ng-click="mainCtrl.logStuff()">Log something</button>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+<script>
+    angular.module('notesApp', [])
+            .controller('MainCtrl', ['$log', function ($log) {
+                //it's preferred to use this syntax with "['$log', function ($log) {", because
+                //process like minification doesn't touch string constants.
+                var self = this;
+                self.logStuff = function () {
+                    $log.log("The button was pressed");
+                };
+            }]);
+</script>
+</body>
+</html>

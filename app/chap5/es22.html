@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html ng-app="notesApp">
+
+<!-- In this example you have a Main controller and a subcontroller for tabs.
+     The problem is that you can't preserve the state between tabs.
+     If you add some items on tab1 and you switch to tab2, when you go back to the first tab all added items are lost-->
+
+<!-- Controllers are instances created and destroyed as we navigate across our application.
+    This is especially true when we work on routing and multiple urls in a Single Page Application.
+    Also, controller cannot directly communicate with another controller to share state or behaviour.-->
+
+<body ng-controller="MainCtrl as mainCtrl">
+
+<h1>Hello controllers!</h1>
+
+<button ng-click="mainCtrl.open('first')">Open first</button>
+<button ng-click="mainCtrl.open('second')">Open second</button>
+
+<!-- ng-switch is a directive to show elements based on a variable (using the on attribute) -->
+<div ng-switch on="mainCtrl.tab">
+
+    <div ng-switch-when="first">
+        <div ng-controller="SubCtrl as ctrl">
+            <h3>First Tab</h3>
+            <ul>
+                <li ng-repeat="item in ctrl.list">
+                    <span ng-bind="item.label"></span>
+                </li>
+            </ul>
+
+            <button ng-click="ctrl.add()">Add More Items</button>
+        </div>
+
+    </div>
+    <div ng-switch-when="second">
+        <div ng-controller="SubCtrl as ctrl">
+            <h3>Second Tab</h3>
+            <ul>
+                <li ng-repeat="item in ctrl.list">
+                    <span ng-bind="item.label"></span>
+                </li>
+            </ul>
+
+            <button ng-click="ctrl.add()">Add More Items</button>
+        </div>
+
+    </div>
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+<script src="es22_app.js"></script>
+</body>
+</html>
