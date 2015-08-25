@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<body ng-app="routingApp">
+
+<h2>AngularJS Routing Application</h2>
+
+<ul>
+    <li><a href="#/">Default Route</a></li>
+    <li><a href="#/second">Second Route</a></li>
+    <li><a href="#/asdasdasd">Nonexistent Route</a></li>
+</ul>
+
+<div ng-view></div>
+
+<!-- Step to follow:
+     1) Include the angular-route source
+     2) Include the module as a dependency of our main AngularJS app module like: ('routingApp', ['ngRoute'])
+     3) Mark which section of the page Angular should change when the route change. This is done with ng-view in html
+     4) Define our routes in the config section using the $routeProvider service, like: .config(['$routeProvider',
+
+     You can also use back and forward in browser.
+-->
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-route.js"></script>
+<script>
+    angular.module('routingApp', ['ngRoute'])
+            .config(['$routeProvider', function ($routeProvider) {
+                $routeProvider.when('/', {
+                    //here define what happens when the URL matches
+                    //here you can sets:
+                    //template: string,
+                    //templateUrl: string,
+                    //controller: string, function or array,
+                    //controllerAs: string,
+                    //resolve: object<key, function>
+                    //In url you can use routes like /list, /recipe/:receipeId and so on.
+                    //You can use controller: 'MyCtrl as ctrl' or
+                    //controller: 'MyCtrl' and controllerAs: 'ctrl'
+                    //are equivalent.
+                    template: '<h5>This is the default route</h5>'
+                })
+                .when('/second', {
+                    //here define what happens when the URL matches
+                    template: '<h5>This is the second route</h5>'
+                })
+                .otherwise({redirectTo: '/'});
+                //remeber to use otherwise to tell to Angualar to redirect, because
+                //if no route matches, Angular leaves the page empty
+            }]);
+</script>
+</body>
+</html>
