@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<body ng-app="filtersApp">
+
+<ul ng-controller="FilterCtrl as ctrl">
+    <li>
+        Amount {{ctrl.amount}}
+    </li>
+    <li>
+        Amount default currency {{ctrl.amount | currency}}
+    </li>
+    <li>
+        Amount INR Currency {{ctrl.amount | currency:'&#163'}} <!-- Using english pound sign-->
+    </li>
+    <li>
+        Amount number {{ctrl.amount | number}}
+    </li>
+    <li>
+        Amount number with 4 decimals {{ctrl.amount | number:4}}
+    </li>
+
+    <li>
+        Name with no filters: {{ctrl.name}}
+    </li>
+    <li>
+        Name lowercase filter {{ctrl.name | lowercase}}
+    </li>
+    <li>
+        Name uppercase filter {{ctrl.name | uppercase}}
+    </li>
+
+    <li>
+        JSON filter {{ctrl.obj | json}}
+    </li>
+
+    <li>
+        Timestamp {{ctrl.startTime}}
+    </li>
+    <li>
+        Default date filter {{ctrl.startTime | date}}
+    </li>
+    <li>
+        Medium date filter {{ctrl.startTime | date:'medium'}}
+    </li>
+    <li>
+        Custom date filter {{ctrl.startTime | date:'M/dd, yyyy'}}
+    </li>
+</ul>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+<script type="text/javascript">
+    angular.module('filtersApp', [])
+            .controller('FilterCtrl', [function () {
+                this.amount = 1024;
+                this.name = 'Shyam Seshadri';
+                this.obj = {test: 'value', num: 123};
+                this.startTime = new Date().getTime();
+            }]);
+</script>
+
+</body>
+</html>

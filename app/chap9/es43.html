@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<body ng-app="filtersApp">
+
+<div ng-controller="FilterCtrl as ctrl">
+
+    <div>
+        Start time(Timestamp): {{ctrl.startTime}}
+    </div>
+    <div>
+        Start time(Datetime): {{ctrl.startTime | date:'medium'}}
+    </div>
+    <div>
+        Start time(Our Filter): {{ctrl.startTime | timeAgo}}
+    </div>
+    <div>
+        someTimeAgo: {{ctrl.someTimeAgo | date:'short'}}
+    </div>
+    <div>
+        someTimeAgo (OurFilter): {{ctrl.someTimeAgo | timeAgo}}
+    </div>
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+<script type="text/javascript">
+    angular.module('filtersApp', [])
+            .controller('FilterCtrl', [function () {
+                this.startTime = new Date().getTime();
+                this.someTimeAgo = new Date().getTime() -
+                        (1000 * 60 * 60 * 4);
+            }])
+            .filter('timeAgo', [function () {
+                var ONE_MINUTE = 1000 * 60;
+                var ONE_HOUR = ONE_MINUTE * 60;
+                var ONE_DAY = ONE_HOUR * 24;
+                var ONE_MONTH = ONE_DAY * 30;
+
+                //if you want to return args use: return function(ts, arg1, arg2, arg3)
+                //and {{ctrl.startTime | timeAgo:arg1:arg2:arg3}}
+                return function (ts, optShowSecondsMessage) {
+                    if(optShowSecondsMessage !== false) {
+                        optShowSecondsMessage = true;
+                    }
+
+                    var currentTime = new Date().getTime();
+                    var diff = currentTime - ts;
+                    if (diff < ONE_MINUTE && optShowSecondsMessage) {
+                        return 'seconds ago';
+                    } else if (diff < ONE_HOUR) {
+                        return 'minutes ago';
+                    } else if (diff < ONE_DAY) {
+                        return 'hours ago';
+                    } else if (diff < ONE_MONTH) {
+                        return 'days ago';
+                    } else {
+                        return 'months ago';
+                    }
+                };
+            }])
+</script>
+
+</body>
+</html>

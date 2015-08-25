@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<body ng-app="filtersApp">
+
+<div ng-controller="FilterCtrl as ctrl">
+    <!-- You can also chain filters, like expression | filter1 | filter2
+         And you can pass also arguments, like | limitTo:5  using ":arg"-->
+
+    <!-- Common Angular filters: currency, number, lowercase, uppercase, json, date -->
+    <div>
+        Amount as a number: {{ctrl.amount | number}}
+    </div>
+    <div>
+        Total cost as a currency: {{ctrl.totalCost | currency}}
+    </div>
+    <div>
+        Total cost in IRN: {{ctrl.totalCost | currency:'INR '}}
+    </div>
+    <div>
+        Shouting the name: {{ctrl.name | uppercase}}
+    </div>
+    <div>
+        Whispering the name: {{ctrl.name | lowercase}}
+    </div>
+    <div>
+        Start time: {{ctrl.startTime | date:'medium'}}
+    </div>
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+<script type="text/javascript">
+    angular.module('filtersApp', [])
+            .controller('FilterCtrl', [function () {
+                this.amount = 1024;
+                this.totalCost = 4906;
+                this.name = 'Shyam Seshadri';
+                this.startTime = new Date().getTime();
+            }]);
+</script>
+
+</body>
+</html>
