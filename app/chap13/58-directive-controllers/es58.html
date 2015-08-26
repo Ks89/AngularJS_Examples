@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- css not included in the code of the book, for this reason the result is terrible, but it works-->
+</head>
+<body ng-app="stockMarketApp">
+
+<!-- Directive controllers -->
+
+<div ng-controller="MainCtrl as mainCtrl">
+
+    <tabs>
+        <tab title="First Tab">
+            This is the first tab.
+            The app started at {{mainCtrl.startedTime | date}}
+        </tab>
+        <tab title="Second Tab">
+            This is the second tab.
+            <div ng-repeat="stock in mainCtrl.stocks">
+                Stock Name: {{stock.name}}
+            </div>
+        </tab>
+    </tabs>
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+<script src="es58_app.js"></script>
+<script src="es58_tabs.js"></script>
+<script src="es58_tab.js"></script>
+</body>
+</html>

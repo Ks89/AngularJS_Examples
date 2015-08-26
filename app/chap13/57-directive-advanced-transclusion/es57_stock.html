@@ -1,0 +1,18 @@
+<div class="stock-dash">
+    <span ng-transclude></span>
+    <!--
+     When angular encounters transclude, it clones the html before replacing it with the template or templateurl contents.
+     Then, when it encounters ng-tranclude, it compiles the trancluded content, but links it to the parent scope
+     instead of the isolated scope of the directive
+     -->
+
+
+    Prince:
+    <span class="stock-price"
+          ng-bind="stockData.price | currency">
+    </span>
+    Percentage Change:
+    <span class="stock-change"
+          ng-bind="getChange(stockData) + '%'">
+    </span>
+</div>

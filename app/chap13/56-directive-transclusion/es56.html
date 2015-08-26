@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<body ng-app="stockMarketApp">
+
+<!-- Directive with basic translusion -->
+
+<div ng-controller="MainCtrl as mainCtrl">
+
+    <h3>List of Stocks</h3>
+
+    <div ng-repeat="s in mainCtrl.stocks">
+        <div stock-widget stock-data="s">
+            This content will be blown away
+        </div>
+    </div>
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+<script src="es56_app.js"></script>
+<script src="es56_directive.js"></script>
+</body>
+</html>

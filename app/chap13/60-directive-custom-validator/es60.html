@@ -1,0 +1,36 @@
+<html>
+<head>
+    <style type="text/css">
+        input.ng-invalid {
+            background: pink;
+        }
+    </style>
+</head>
+<body ng-app="stockMarketApp">
+
+<div ng-controller="MainCtrl as mainCtrl">
+
+    <h3>Zip Code Input</h3>
+
+    <h5>Zips are allowed in one of the following formats</h5
+
+    <ul>
+        <li>12345</li>
+        <li>12345 1234</li>
+        <li>12345-1234</li>
+    </ul>
+
+    <form novalidate="">
+        Enter valid zip code:
+        <input type="text"
+               ng-model="mainCtrl.zip"
+               valid-zip>
+    </form>
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+<script src="es60_app.js"></script>
+<script src="es60_directive.js"></script>
+</body>
+</html>

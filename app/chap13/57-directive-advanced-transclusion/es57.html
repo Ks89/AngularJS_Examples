@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<body ng-app="stockMarketApp">
+
+<!-- Directive advanced transclusion -->
+
+<div ng-controller="MainCtrl as mainCtrl">
+
+    <h3>List of Stocks</h3>
+
+    <div simple-stock-repeat="mainCtrl.stocks">
+        We found {{stock.name}} at {{currentIndex}}
+    </div>
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+<script src="es57_app.js"></script>
+<script src="es57_directive.js"></script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<html>
+<head>
+    <title>Slider App</title>
+    <link rel="stylesheet" href="jquery-slider/jquery.nouislider.css">
+    <style type="text/css">
+        .slider {
+            display: block;
+            height: 20px;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body ng-app="sliderApp">
+
+<div ng-controller="MainCtrl as mainCtrl">
+
+    <div>
+        The current value of the slider is {{mainCtrl.selectedValue}}
+    </div>
+
+    <no-ui-slider class="slider"
+                  ng-model="mainCtrl.selectedValue"
+                  range-min="500"
+                  range-max="5000">
+
+    </no-ui-slider>
+
+    <div>
+        <input type="number"
+               ng-model="mainCtrl.textValue"
+               min="500"
+               max="5000"
+               placeholder="Set a value">
+        <button ng-click="mainCtrl.setSelectedValue()">
+            Set slider value
+        </button>
+    </div>
+</div>
+
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="jquery-slider/jquery.nouislider.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+<script src="es59_app.js"></script>
+<script src="es59_noui-slider.js"></script>
+</body>
+</html>
