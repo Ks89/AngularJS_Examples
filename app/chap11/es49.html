@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<body ng-app="stockMarketApp">
+
+<!-- example with directive with template -->
+
+<div ng-controller="MainCtrl as mainCtrl">
+
+    <h3>List of Stocks</h3>
+
+    <div ng-repeat="stock in mainCtrl.stocks">
+        <!-- remember that here you define a "stock-widget", but in javascript you'll use stockWidget in camel-case -->
+        <div stock-widget>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+<script src="es48_app.js"></script>
+<script src="es49_directive.js"></script>
+</body>
+</html>

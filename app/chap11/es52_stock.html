@@ -1,0 +1,22 @@
+<!-- All references to the parents stock var have been replaced with the directive's own instance, stockData. -->
+<!-- Now the html and the directive are no longer dependent on the context in which they are used, because
+     all the data and logic that the directive needs are eithe contained (using the link  function)
+     or passed to it (using the isolated scope). -->
+<div class="stock-dash">
+    Name:
+    <span class="stock-name"
+          ng-bind="stockData.name">
+    </span>
+    Prince:
+    <span class="stock-price"
+          ng-bind="stockData.price | currency">
+    </span>
+    Percentage Change:
+    <span class="stock-change"
+          ng-bind="getChange(stockData) + '%'">
+    </span>
+
+    <button ng-click="changeStock()">
+        Change stock in directive
+    </button>
+</div>

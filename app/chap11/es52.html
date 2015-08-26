@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<body ng-app="stockMarketApp">
+
+<!-- example with directive and scope.-->
+<!-- In this example there is a PROBLEM. If you click "change stock in directive"
+     and after that "Change first stock from controller" the first item won't change!!!!-->
+<div ng-controller="MainCtrl as mainCtrl">
+
+    <h3>List of Stocks</h3>
+
+    <!-- To pass s to our directive every cycle -->
+    <div ng-repeat="s in mainCtrl.stocks">
+        <div stock-widget stock-data="s">
+        </div>
+    </div>
+
+    <button ng-click="mainCtrl.changeAllStocks()">
+        Change all stock from controller
+    </button>
+    <button ng-click="mainCtrl.changeFirstStock()">
+        Change first stock from controller
+    </button>
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+<script src="es52_app.js"></script>
+<script src="es52_directive.js"></script>
+</body>
+</html>

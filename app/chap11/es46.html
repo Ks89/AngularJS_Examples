@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<body ng-app="stockMarketApp">
+
+<div ng-controller="MainCtrl as mainCtrl">
+
+    <h3>List of Stocks</h3>
+
+    <div ng-repeat="stock in mainCtrl.stocks">
+        <div ng-include="mainCtrl.stockTemplate">
+        </div>
+    </div>
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+<script src="es46_app.js"></script>
+</body>
+</html>
