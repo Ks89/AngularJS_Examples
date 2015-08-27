@@ -1,0 +1,61 @@
+<html>
+<head>
+</head>
+
+<!-- Angular compile step in a directive is the correct place to do any sort of html template manipulation and DOM
+     transformation. We never use link and compile function together, because when we use the compile key
+     we have to return a linking function from within it instead.-->
+
+<body ng-app="dynamicFormApp">
+
+<div ng-controller="MainCtrl as mainCtrl">
+
+    <!-- Instead of writing complex html we instead want to abstract some of that using
+         the form-element directive, on which we specify the validation and bindings rules.
+         The form-element directive also allows us to define validation messages to show on different error conditions.
+         These validation messages would then be shown and hidden under the right conditions automatically
+         without the need for any extra code.
+    -->
+
+    <form novalidate="" name="mainForm">
+        <form-element type="text"
+                      name="uname"
+                      bind-to="mainCtrl.username"
+                      label="Username"
+                      required
+                      ng-minlength="5">
+            <validation key="required">
+                Please enter a username
+            </validation>
+            <validation key="minlength">
+                Username must be at least 5 characters
+            </validation>
+        </form-element>
+
+        Username is {{mainCtrl.username}}
+
+        <form-element type="password"
+                      name="pwd"
+                      bind-to="mainCtrl.password"
+                      label="Password"
+                      required
+                      ng-pattern="/^[a-zA-Z0-9]+$/">
+            <validation key="required">
+                Please enter a password
+            </validation>
+            <validation key="pattern">
+                Password must only be alphanumeric characters
+            </validation>
+        </form-element>
+        Password is {{mainCtrl.password}}
+
+        <button>Submit</button>
+    </form>
+
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+<script src="es61_app.js"></script>
+<script src="es61_directive.js"></script>
+</body>
+</html>

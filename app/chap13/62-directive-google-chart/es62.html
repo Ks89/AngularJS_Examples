@@ -1,0 +1,25 @@
+<html>
+<head>
+</head>
+
+<body ng-app="googleChartApp">
+
+<div ng-controller="MainCtrl as mainCtrl">
+    <div>
+        <button ng-click="mainCtrl.changeData()">
+            Change Pie Chart Data
+        </button>
+    </div>
+    <div pie-chart
+         chart-data="mainCtrl.pieChartData"
+         chart-config="mainCtrl.pieChartConfig">
+    </div>
+</div>
+
+<script src="http://www.google.com/jsapi"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+<script src="es62_app.js"></script>
+<script src="es62_googleChartLoader.js"></script>
+<script src="es62_pieChart.js"></script>
+</body>
+</html>

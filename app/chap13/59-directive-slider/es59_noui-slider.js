@@ -12,7 +12,7 @@ angular.module('sliderApp')
             link: function ($scope, $element, $attr, ngModelCtrl) {
 
                 //because noUiSlider is a jQuery plugin, and we load jQuery before we load angularjs
-                //in es60.html, we get to directly call the noUiSlider function on our element,
+                //in es62.html, we get to directly call the noUiSlider function on our element,
                 //because jQuery seamlessly integrates into angularjs.
                 $element.noUiSlider({
                     // We might not have the initial value in ngModelCtrl yet
